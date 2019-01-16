@@ -10,11 +10,12 @@ import time
 from scipy.io import wavfile
 
 win_w, win_h = 1280, 720
-edf_file_path = r'.\EEG_files'
-edf_filename = 'p30d1p1_0_600s_5kHz_micro_m.edf'
-spykingcircus_dirpath = r'.\Spyking_circus_files\20150320-103613'
-spykingcircus_results_filename = '20150320-103613-001_0.result.hdf5'
-spykingcircus_clusters_filename = '20150320-103613-001_0.clusters.hdf5'
+
+edf_file_path = r'C:\Users\deudon\Desktop\SpikeSorting\_Data\002RM_day4_pointes\signal\monopolaire_5kHz_d4_post_crise'
+edf_filename = 'p30d4p1_0_600s_5kHz_micro_m.edf'
+spykingcircus_dirpath = r'C:\Users\deudon\Desktop\SpikeSorting\_Data\002RM_day4_pointes\spykingcircus_results'
+spykingcircus_results_filename = '20150325-103311-001_0.result.hdf5'
+spykingcircus_clusters_filename = '20150325-103311-001_0.clusters.hdf5'
 time_sel, chansel_pos = [2, 14], 40
 sound_samples_dir = r'.\Sounds\99Sounds99DrumSamples\SampleOGG'
 

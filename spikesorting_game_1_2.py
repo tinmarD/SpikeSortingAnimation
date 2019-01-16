@@ -16,7 +16,7 @@ spykingcircus_dirpath = r'C:\Users\deudon\Desktop\SpikeSorting\_Data\002RM_day4_
 spykingcircus_results_filename = '20150325-103311-001_0.result.hdf5'
 spykingcircus_clusters_filename = '20150325-103311-001_0.clusters.hdf5'
 time_sel, chansel_pos = [2, 14], 40
-sound_samples_dir = r'C:\Users\deudon\Desktop\SpikeSorting\_Scripts\_Python\Animation\99Sounds99DrumSamples\SampleOGG'
+sound_samples_dir = r'.\Sounds\samples_shortsound'
 
 # Read Spiking Circus results file
 f_results = h5py.File(os.path.join(spykingcircus_dirpath, spykingcircus_results_filename), 'r')
