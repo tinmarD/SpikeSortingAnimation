@@ -22,10 +22,8 @@ spykingcircus_results_filename = '20170113-104634-001_0.result.hdf5'
 spykingcircus_clusters_filename = '20170113-104634-001_0.clusters.hdf5'
 time_sel, chansel_pos = [152.7, 180], 0
 artefact_filepath = r'C:\Users\deudon\Desktop\SpikeSorting\_Data\VL14\DAY2_Elodie\artefact_day2_epifar.csv'
-# Sound
-sound_samples_dir = r'C:\Users\deudon\Desktop\SpikeSorting\_Scripts\_Python\Animation\samples_shortsound_2'
-sound_samples_dir = r'C:\Users\deudon\Desktop\SpikeSorting\_Scripts\_Python\Animation\99Sounds99DrumSamples\SampleOGG_sel'
-unit_sound_path = r'C:\Users\deudon\Desktop\SpikeSorting\_Scripts\_Python\Animation\pluck_3ms.ogg'
+# Spike Sound :
+unit_sound_path = r'Sounds\pluck_3ms.ogg'
 
 # Read artefact periods file
 df = pd.read_csv(artefact_filepath, sep=';', decimal=',')

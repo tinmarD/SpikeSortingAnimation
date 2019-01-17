@@ -9,41 +9,15 @@ import h5py
 import time
 from scipy.io import wavfile
 
+
+## Change these parameters
 win_w, win_h = 1280, 720
 edf_file_path = r'C:\Users\deudon\Desktop\SpikeSorting\_Data\002RM_day4_pointes\signal\monopolaire_5kHz_d4_post_crise'
 edf_filename = 'p30d4p1_0_600s_5kHz_micro_m.edf'
-spykingcircus_dirpath = r'C:\Users\deudon\Desktop\SpikeSorting\_Data\002RM_day4_pointes\spykingcircus_results'
-spykingcircus_results_filename = '20150325-103311-001_0.result.hdf5'
-spykingcircus_clusters_filename = '20150325-103311-001_0.clusters.hdf5'
 time_sel, chansel_pos = [2, 14], 40
-sound_samples_dir = r'.\Sounds\samples_shortsound'
 
-# Read Spiking Circus results file
-f_results = h5py.File(os.path.join(spykingcircus_dirpath, spykingcircus_results_filename), 'r')
-f_clusters = h5py.File(os.path.join(spykingcircus_dirpath, spykingcircus_clusters_filename), 'r')
-
-spktimes_grp = f_results['spiketimes']
-# Sort data in increasing number of the unit
-unit_names_temp = list(spktimes_grp.keys())
-spktrains_temp = list(spktimes_grp.values())
-dataset_num = np.zeros(len(unit_names_temp))
-for idx, name in enumerate(unit_names_temp):
-    dataset_num[idx] = re.findall('\d+', name)[0]
-sort_vect = dataset_num.argsort()
-# Order the spike trains and unit names
-unit_names = np.array([unit_names_temp[i] for i in sort_vect])
-spktrainsdataset = [spktrains_temp[i] for i in sort_vect]
-# Get units appearing on the electrode selected
-pref_el_temp = np.array(f_clusters['electrodes']).ravel().astype(int)
-pref_el = pref_el_temp[sort_vect]
-# Get all neurons of the appearing on the tetrode
 tetrode_num = np.ceil((1 + chansel_pos) / 4.0)
 tetrode_micro_wire_pos = np.arange(4 * (tetrode_num - 1), 4 * tetrode_num, 1).astype(int)
-unit_sel_pos = np.where(np.isin(pref_el, tetrode_micro_wire_pos))[0]
-# unit_sel_pos = np.where(np.isin(pref_el, chansel_pos))[0]
-n_unit_sel = len(unit_sel_pos)
-unit_names_sel = unit_names[unit_sel_pos]
-spikestimes = [np.array(f_results['spiketimes']['temp_{}'.format(i)]).flatten() / 30000 - time_sel[0] for i in unit_sel_pos]
 
 # Read edf file
 raw = mne.io.read_raw_edf(os.path.join(edf_file_path, edf_filename))
@@ -84,7 +58,7 @@ fps, i_step, i_step_old = 70, 1, 1
 t_start, t_end = i / fs, (i + win_w) / fs
 t_center_start = (t_end - t_start) / 2
 clock_start = time.clock()
-plot_filt = False
+plot_filt = True
 
 while running:
     lines_raw = [np.vstack([np.arange(win_w), raw_sig_scaled_win[i_sig][i:i+win_w]]).T for i_sig in range(4)]
