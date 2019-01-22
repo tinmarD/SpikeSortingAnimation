@@ -51,7 +51,7 @@ pygame.font.init()
 myfont = pygame.font.SysFont('Comic Sans MS', 15)
 clock = pygame.time.Clock()
 color_pal = sns.color_palette(n_colors=2)
-color_rawsig, color_filtsig = (255*np.array(color_pal[0])).astype(int), (255*np.array(color_pal[1])).astype(int)
+color_rawsig, color_filtsig = 255*np.array(sns.color_palette("Paired")[0]), (255*np.array(color_pal[1])).astype(int)
 win = pygame.display.set_mode((win_w, win_h))
 running, i = 1, 0
 fps, i_step, i_step_old = 70, 1, 1

@@ -169,14 +169,14 @@ while running:
                 # Plot a vertical bar a the time of each AP
                 line_ap_x = int((t_ap-t_start)*fs)
                 pygame.draw.line(win, color_units[i_unit], [line_ap_x, unit_offset_i - win_h/80],
-                                   [line_ap_x, unit_offset_i + win_h/80], 2)
+                                   [line_ap_x, unit_offset_i + win_h/80], 8)
                 # Color the raw signal
                 tind_range = np.arange(int(t_ap * fs) - unit_half_duration_samples,
                                        int(t_ap * fs) + unit_half_duration_samples)
                 for j in range(4):
                     lines_ap = np.vstack([tind_range - int(t_start * fs),
                                           raw_sig_scaled_win[j][tind_range]]).T
-                    pygame.draw.aalines(win, color_units[i_unit], False, lines_ap, 8)
+                    pygame.draw.aalines(win, color_units[i_unit], False, lines_ap, 5)
                 if (t_ap, i_unit) not in ap_played:
                     ap_to_play.append((t_ap, i_unit))
                     ap_played.append((t_ap, i_unit))

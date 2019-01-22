@@ -126,7 +126,7 @@ unit_sound = pygame.mixer.Sound(unit_sound_path)
 myfont = pygame.font.SysFont('Comic Sans MS', 15)
 clock = pygame.time.Clock()
 color_pal = sns.color_palette(n_colors=2)
-color_rawsig = (255*np.array(color_pal[0])).astype(int)
+color_rawsig = 255*np.array(sns.color_palette("Paired")[0])
 color_unit = (255*np.array(color_pal[1])).astype(int)
 colors = ["windows blue", "amber", "greyish", "faded green", "dusty purple"]
 color_units = 255*np.array(sns.xkcd_palette(colors)[1])
